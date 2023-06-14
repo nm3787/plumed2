@@ -20,7 +20,7 @@
    along with plumed.  If not, see <http://www.gnu.org/licenses/>.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #include "CLTool.h"
-#include "CLToolRegister.h"
+#include "core/CLToolRegister.h"
 #include "core/PlumedMain.h"
 #include "tools/Vector.h"
 #include "tools/Random.h"
@@ -218,7 +218,7 @@ public:
     int istep=0; double zero=0;
     plumed->cmd("setStep",&istep);
     plumed->cmd("setMasses",&masses[0]);
-    for(unsigned i=0; i<forces.size(); ++i) forces[i].zero();
+    Tools::set_to_zero(forces);
     plumed->cmd("setForces",&forces[0][0]);
     plumed->cmd("setEnergy",&zero);
     if( lperiod ) plumed->cmd("setBox",&box[0]);
@@ -258,7 +258,7 @@ public:
       plumedWantsToStop=0;
       plumed->cmd("setStep",&istepplusone);
       plumed->cmd("setMasses",&masses[0]);
-      for(unsigned i=0; i<forces.size(); ++i) forces[i].zero();
+      Tools::set_to_zero(forces);
       plumed->cmd("setForces",&forces[0][0]);
       double fenergy=0.0;
       plumed->cmd("setEnergy",&fenergy);

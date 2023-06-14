@@ -20,7 +20,7 @@
    along with plumed.  If not, see <http://www.gnu.org/licenses/>.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #include "Colvar.h"
-#include "ActionRegister.h"
+#include "core/ActionRegister.h"
 #include "core/PlumedMain.h"
 #include "core/Atoms.h"
 
@@ -87,7 +87,7 @@ unsigned ExtraCV::getNumberOfDerivatives() {
 }
 
 void ExtraCV::prepare() {
-/// \todo: notify Atoms that this is requested
+  atoms.setExtraCVNeeded(name,true);
 }
 
 // calculator

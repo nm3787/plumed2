@@ -19,7 +19,7 @@
    You should have received a copy of the GNU Lesser General Public License
    along with plumed.  If not, see <http://www.gnu.org/licenses/>.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-#include "ActionRegister.h"
+#include "core/ActionRegister.h"
 #include "Function.h"
 #include "tools/Exception.h"
 #include "tools/Communicator.h"
@@ -273,7 +273,7 @@ FuncSumHills::FuncSumHills(const ActionOptions&ao):
       double a,b;
       Tools::convert(gmin[i],a);
       Tools::convert(gmax[i],b);
-      unsigned n=((b-a)/gspacing[i])+1;
+      unsigned n=std::ceil((b-a)/gspacing[i]);
       if(gbin[i]<n) gbin[i]=n;
     }
 
